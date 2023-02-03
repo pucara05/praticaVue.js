@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vue.js</title>
+  </head>
+  <body>
+    <div id="elemento">
+      {{contenido}}
+      <br>
+      <input type="text" v-model="nuevolenguaje"/>
+      <input type="text" v-model="nuevolink"/>
+      <button @click="agregarlenguaje">agregar lenguaje</button>
+      <ul>
+        <li v-for="lenguaje of lenguajes"><a :href="lenguaje.link" target="_blank">{{lenguaje.nombre}}</a></li>
+      </ul>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <script>
+    const con = new Vue({
+      el: "#elemento",
+      data: {
+        contenido: "aprendiendo vue.js",
+        // comentario en vue.js sirve en script lenguajes:['javascript','java','python']
+        lenguajes:[
+          {
+            nombre: "javascript",
+            link: "https://www.javascript.com/",
+          },
+          { nombre: "phyton", link: " https://www.python.org/" },
+          { nombre: "java", link: " https://www.java.com/es/" },
+        ],
+        nuevolenguaje:'',
+        nuevolink:''
+
+      },
+      methods: {
+        agregarlenguaje(){
+            this.lenguajes.push({nombre:this.nuevolenguaje,link:this.nuevolink})
+
+        }
+      },
+    });
+  </script>
+</html>
